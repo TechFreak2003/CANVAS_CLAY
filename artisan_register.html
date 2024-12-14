@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Registration</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, black, brown);
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(255, 87, 34, 0.8);
+            text-align: center;
+        }
+
+        .title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ff5722;
+            text-shadow: 0 0 10px white, 0 0 20px #ff5722;
+            animation: glow 3s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff5722, 0 0 20px #ff5722;
+            }
+            100% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #ff5722, 0 0 30px #ff5722;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .form-group select {
+            color: white;
+        }
+
+        .form-group input::placeholder {
+            color: #bbb;
+        }
+
+        .form-actions {
+            margin-top: 20px;
+        }
+
+        .form-actions button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            color: white;
+            background: linear-gradient(135deg, #5a5a5a, #9e5e34);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .form-actions button:hover {
+            background: linear-gradient(135deg, #9e5e34, #5a5a5a);
+            transform: scale(1.05);
+        }
+
+        .links {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .links a {
+            display: inline-block;
+            color: #ffcccb;
+            text-decoration: none;
+            margin: 8px;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border: 1px solid #ffcccb;
+            border-radius: 5px;
+        }
+
+        .links a:hover {
+            color: #ff5722;
+            border-color: #ff5722;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Artist Registration</div>
+        <form action="artist_registration_process.html" method="POST">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a password" required>
+            </div>
+            <div class="form-group">
+                <label for="specialization">Specialization</label>
+                <select id="specialization" name="specialization" required>
+                    <option value="" disabled selected>Select specialization</option>
+                    <option value="painting">Painting</option>
+                    <option value="sculpture">Sculpture</option>
+                    <option value="ceramics">Ceramics</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Register</button>
+            </div>
+        </form>
+        <div class="links">
+            <a href="artisan_login.html">Back to Login</a>
+        </div>
+    </div>
+</body>
+</html>

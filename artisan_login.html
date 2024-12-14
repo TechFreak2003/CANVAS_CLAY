@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan Login</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #3e2723, #000000); /* Brown to black gradient */
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 450px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(255, 87, 34, 0.8);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px #ff5722, 0 0 30px #ff5722;
+            animation: glowText 2s infinite alternate;
+        }
+
+        @keyframes glowText {
+            0% {
+                text-shadow: 0 0 10px #ff5722, 0 0 20px #ff5722, 0 0 30px #ff5722;
+            }
+            100% {
+                text-shadow: 0 0 20px #ff5722, 0 0 40px #ff5722, 0 0 60px #ff5722;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #333;
+            color: #fff;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border: 2px solid #ff5722;
+            box-shadow: 0 0 10px rgba(255, 87, 34, 0.6);
+        }
+
+        .form-actions {
+            margin-top: 25px;
+        }
+
+        .form-actions a {
+            text-decoration: none;
+        }
+
+        .form-actions button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #ff5722, #ff9800);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .form-actions button:hover {
+            background: linear-gradient(135deg, #ff9800, #ff5722);
+            transform: scale(1.05);
+        }
+
+        .links {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .links a {
+            display: block;
+            color: #ffcccb;
+            text-decoration: none;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .links a:hover {
+            color: #ff5722;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Welcome Artisans to Canvas & Clay</div>
+        <form id="loginForm" action="dashboard.html" method="POST" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-actions">
+                <a href="artisan.html">
+                    <button type="button">Login</button>
+                </a>
+            </div>
+        </form>
+        <div class="links">
+            <a href="artisan_register.html">New Registration</a>
+            <a href="artisan_forgotpassword.html">Forgot Password?</a>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            if (email === "" || password === "") {
+                alert("Please fill in both fields.");
+                return false;
+            }
+            // You can add more complex validation here (e.g., checking email format or password strength)
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan Product Listing</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #2c1810 0%, #000000 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .form-section {
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .form-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #4a3429;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .media-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .camera-section, .upload-section {
+            padding: 1rem;
+            border: 2px dashed #4a3429;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .camera-feed {
+            width: 100%;
+            height: 300px;
+            background: #000;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+
+        .preview-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .preview-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #4a3429;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ffd700, #ff8c00);
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .submit-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .submit-btn {
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #ffd700, #ff8c00);
+            border: none;
+            border-radius: 50px;
+            color: #000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(-20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .rotate-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            margin: 1rem 0;
+        }
+
+        .rotate-view {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .rotate-controls {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .typing-animation::placeholder {
+            animation: typing 2s steps(40, end);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Your Product Listing</h1>
+        <form id="productForm">
+            <div class="form-grid">
+                <div class="form-section">
+                    <div class="input-group">
+                        <label><i class="fas fa-user"></i> Artist/Artisan Details</label>
+                        <input type="text" placeholder="Your Name" class="typing-animation" required>
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-palette"></i> Craft Specialization</label>
+                        <input type="text" placeholder="Type of Craft" required>
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-map-marker-alt"></i> Location</label>
+                        <input type="text" placeholder="Your Location" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="input-group">
+                        <label><i class="fas fa-tag"></i> Product Name</label>
+                        <input type="text" placeholder="Enter Product Name" required>
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-list"></i> Category</label>
+                        <select required>
+                            <option value="">Select Category</option>
+                            <option value="pottery">Pottery</option>
+                            <option value="textiles">Textiles</option>
+                            <option value="woodcraft">Woodcraft</option>
+                            <option value="jewelry">Jewelry</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-dollar-sign"></i> Price (in ETH)</label>
+                        <input type="number" step="0.001" placeholder="0.00" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="input-group">
+                        <label><i class="fas fa-camera"></i> Product Images</label>
+                        <div class="media-section">
+                            <div class="camera-section">
+                                <video id="camera-feed" class="camera-feed" autoplay playsinline></video>
+                                <button type="button" class="btn btn-primary" id="capture-btn">
+                                    <i class="fas fa-camera"></i> Capture
+                                </button>
+                            </div>
+                            <div class="upload-section">
+                                <label for="file-upload" class="btn btn-secondary">
+                                    <i class="fas fa-upload"></i> Upload Images
+                                </label>
+                                <input type="file" id="file-upload" multiple accept="image/*" style="display: none">
+                                <div class="preview-container" id="preview-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="input-group">
+                        <label><i class="fas fa-sync"></i> 360° View</label>
+                        <div class="rotate-container">
+                            <div class="rotate-view" id="rotate-view">
+                                <canvas id="rotate-canvas"></canvas>
+                            </div>
+                            <div class="rotate-controls">
+                                <button type="button" class="btn btn-secondary" id="rotate-left">
+                                    <i class="fas fa-undo"></i>
+                                </button>
+                                <button type="button" class="btn btn-secondary" id="rotate-right">
+                                    <i class="fas fa-redo"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="input-group">
+                    <label><i class="fas fa-align-left"></i> Product Description</label>
+                    <textarea rows="4" placeholder="Describe your product in detail..." required></textarea>
+                </div>
+            </div>
+
+            <div class="submit-container">
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-check"></i> Mint & List Product
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        async function initCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const videoElement = document.getElementById('camera-feed');
+                videoElement.srcObject = stream;
+            } catch (err) {
+                console.error('Error accessing camera:', err);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initCamera);
+
+        document.getElementById('capture-btn').addEventListener('click', () => {
+            const video = document.getElementById('camera-feed');
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0);
+            
+            const img = document.createElement('img');
+            img.src = canvas.toDataURL('image/jpeg');
+            img.className = 'preview-image';
+            document.getElementById('preview-container').appendChild(img);
+        });
+
+        document.getElementById('file-upload').addEventListener('change', (event) => {
+            const files = event.target.files;
+            const container = document.getElementById('preview-container');
+
+            for (const file of files) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'preview-image';
+                    container.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        let rotation = 0;
+        document.getElementById('rotate-right').addEventListener('click', () => {
+            rotation += 45;
+            document.getElementById('rotate-canvas').style.transform = `rotate(${rotation}deg)`;
+        });
+
+        document.getElementById('rotate-left').addEventListener('click', () => {
+            rotation -= 45;
+            document.getElementById('rotate-canvas').style.transform = `rotate(${rotation}deg)`;
+        });
+
+        document.getElementById('productForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Product submitted for minting!');
+        });
+    </script>
+</body>
+</html>

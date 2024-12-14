@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas & Clay Question</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, black, brown);
+            color: white;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            animation: glow 3s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff5722, 0 0 20px #ff5722, 0 0 25px #ff5722;
+            }
+            100% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #ff5722, 0 0 30px #ff5722, 0 0 40px #ff5722, 0 0 50px #ff5722;
+            }
+        }
+
+        .typing {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 2.5rem;
+            font-weight: bold;
+            animation: typing 4s steps(30, end), blink 0.5s step-end infinite;
+            border-right: 4px solid white;
+            color: #ffcccb;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            from {
+                border-color: white;
+            }
+            to {
+                border-color: transparent;
+            }
+        }
+
+        .options {
+            margin-top: 30px;
+        }
+
+        .option {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px;
+            border: 2px solid white;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #5a5a5a, #9e5e34);
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .option:hover {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #9e5e34, #5a5a5a);
+            box-shadow: 0 0 20px rgba(255, 87, 34, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="typing">Welcome to CANVAS & CLAY</div>
+        <div class="options">
+            <a href="artisan_login.html" class="option">Are you an Artisan?</a>
+            <a href="buyer_seller.html" class="option">Are you a Buyer/Seller?</a>
+        </div>
+    </div>
+</body>
+</html>

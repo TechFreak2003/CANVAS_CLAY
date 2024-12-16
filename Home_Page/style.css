@@ -38,7 +38,7 @@ body {
     left: 0;
     width: 100%;
     padding: 4rem 12% 4rem;
-    background: #ccd5ae;
+    background: #C5E18A;
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
@@ -283,7 +283,7 @@ span {
 /* Services Section */
 .services {
     padding: 50px;
-    background-color: #f9f9f9;
+    background-color: #9EA93F;
 }
 
 .service-container {
@@ -351,93 +351,102 @@ span {
         flex: 0 0 100%;
     }
 }
-/* Owl Carousel Styles */.testimonial-carousel {
-    display: flex;
-    gap: 20px; 
-    padding: 20px;
-    justify-content: center; 
-    align-items: center;
-    width: 100%; 
-    overflow: hidden;  
-    margin: 10px auto;
-    max-width: 500px; 
-    position: relative; 
+.testimonials {
+    padding: 50px;
+    height: 50px;
+    background-color: #f9f9f9;
+    overflow-y: auto; /* Add scrolling if content overflows */
 }
-
-.testimonial-item {
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    width: 250px;
-    height: 350px; 
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  
+  .section-title {
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-sizing: border-box; 
-    flex-shrink: 0; 
-    scroll-snap-align: center; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Hover effect */
-.testimonial-item:hover {
-    transform: translateY(-10px); 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); }
-
-
-/* Avatar styling */
-.testimonial-avatar {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  .testimonial-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .testimonial-item {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 380px;
+    transition: transform 0.3s ease;
+  }
+  
+  .testimonial-item:hover {
+    transform: translateY(-10px);
+  }
+  
+  .testimonial-quote {
+    position: relative;
+    padding-left: 40px;
+  }
+  
+  .quote-icon {
+    position: absolute;
+    left: -40px;
+    top: 0;
+    color: #007bff;
+    opacity: 0.5;
+    font-size: 2rem;
+  }
+  
+  .testimonial-quote p {
+    font-size: small;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  .testimonial-avatar {
+    margin-right: 1rem;
+  }
+  
+  .testimonial-avatar img {
+    border-radius: 50%;
     width: 80px;
     height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-bottom: 15px;
-    display: inline-block;
-}
-
-.testimonial-avatar img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
-}
-
-/* Testimonial comment */
-.testimonial-comment {
-    font-size: 16px;
-    font-style: italic;
-    margin-bottom: 15px;
-    color: #555;
-}
-
-/* Testimonial author name and role */
-.testimonial-name {
+  }
+  
+  .author-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .testimonial-name {
     font-weight: bold;
-    font-size: 18px;
     color: #333;
-    margin-bottom: 5px;
-}
-
-.testimonial-role {
-    font-size: 14px;
-    color: #888;
-}
-
-/* Adjust the Owl Carousel for smaller screens */
-@media (max-width: 768px) {
-    .testimonial-item {
-        width: 220px;
+    font-style: normal;
+  }
+  
+  .testimonial-role {
+    color: #777;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .testimonial-wrapper {
+      flex-direction: column;
+      align-items: center;
     }
-}
-
-@media (max-width: 480px) {
-    .testimonial-item {
-        width: 180px;
-    }
-}
-
+  }
 .container {
     width: 90%;
     margin: 0 auto;
@@ -447,7 +456,7 @@ span {
 /* Contact Section */
 .contact-us {
     padding: 60px 0;
-    background-color: #ffffff;
+    background-color: #FFD700;
 }
 
 .contact-content {

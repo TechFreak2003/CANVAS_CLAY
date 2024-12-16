@@ -83,6 +83,27 @@
             animation: backgroundScroll 10s linear infinite;
         }
 
+        /* New Wallet Button Styles */
+        .wallet-connect {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            background: linear-gradient(45deg, var(--accent-gold), var(--accent-bronze));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .wallet-connect:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
         @keyframes backgroundScroll {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -170,7 +191,7 @@
 
         .product-actions {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             margin-top: 20px;
             position: relative;
         }
@@ -204,11 +225,6 @@
         .btn-bid {
             background: linear-gradient(45deg, var(--accent-gold), #FFA500);
             color: var(--bg-primary);
-        }
-
-        .btn-buy {
-            background: linear-gradient(45deg, #4CAF50, #81C784);
-            color: white;
         }
 
         .btn-sell {
@@ -258,7 +274,10 @@
     <div class="bg-animation"></div>
     <div class="container">
         <header class="header">
-            <h1 class="typing-effect">Artisan's Haven: Ethereal Handicrafts Marketplace</h1>
+            <button class="wallet-connect">
+                <i class="fas fa-wallet"></i> Connect Wallet
+            </button>
+            <h1 class="typing-effect">Canvas & Clay : Ethereal Handicrafts Marketplace</h1>
         </header>
 
         <section id="available-products">
@@ -348,7 +367,6 @@
                 </div>
                 <div class="product-actions">
                     <button class="btn btn-bid"><i class="fas fa-gavel"></i> Bid</button>
-                    <button class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</button>
                 </div>
                 ${includeSellButton ? `<button class="btn btn-sell"><i class="fas fa-tags"></i> Sell</button>` : ''}
             `;
@@ -358,6 +376,12 @@
         // Populate product grids
         products.forEach(product => createProductCard(product, 'productGrid'));
         purchasedProducts.forEach(product => createProductCard(product, 'purchasedGrid', true));
+
+        // Add wallet connection functionality
+        document.querySelector('.wallet-connect').addEventListener('click', () => {
+            // Add your wallet connection logic here
+            alert('You will be redirected to METAMASK Wallet');
+        });
     </script>
 </body>
 </html>

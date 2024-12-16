@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan's Haven - Exquisite Handicrafts</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #121212;
+            --bg-secondary: #1E1E1E;
+            --text-primary: #E6D2B5;
+            --accent-gold: #D4AF37;
+            --accent-bronze: #8B4513;
+            --accent-dark-brown: #3E2723;
+            --glow-color: rgba(212, 175, 55, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--accent-dark-brown) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--bg-primary), var(--accent-bronze));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            padding: 50px 0;
+            background: rgba(0,0,0,0.7);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                transparent 0,
+                rgba(255,255,255,0.05) 50px,
+                transparent 100px
+            );
+            animation: backgroundScroll 10s linear infinite;
+        }
+
+        @keyframes backgroundScroll {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .typing-effect {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+            border-right: 3px solid var(--accent-gold);
+            max-width: 100%;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent-gold); }
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .product-card {
+            background: rgba(30,30,30,0.9);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(
+                circle at center, 
+                rgba(212, 175, 55, 0.1) 0%, 
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            filter: brightness(0.9) contrast(1.2);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+            filter: brightness(1) contrast(1.3);
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-bid {
+            background: linear-gradient(45deg, var(--accent-gold), #FFA500);
+            color: var(--bg-primary);
+        }
+
+        .btn-buy {
+            background: linear-gradient(45deg, #4CAF50, #81C784);
+            color: white;
+        }
+
+        .btn-sell {
+            background: linear-gradient(45deg, #2196F3, #64B5F6);
+            color: white;
+            margin-top: 15px;
+        }
+
+        .product-details {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .bidding-room-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-bronze));
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 15px;
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .bidding-room-btn:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.5);
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 40px 0 20px;
+            color: var(--accent-gold);
+            position: relative;
+            text-shadow: 0 0 10px var(--glow-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="container">
+        <header class="header">
+            <h1 class="typing-effect">Artisan's Haven: Ethereal Handicrafts Marketplace</h1>
+        </header>
+
+        <section id="available-products">
+            <h2 class="section-title">Available Artifacts</h2>
+            <div class="products-grid" id="productGrid">
+                <!-- Product cards will be dynamically inserted here -->
+            </div>
+            <a href="bidroom.html" class="bidding-room-btn">
+                <i class="fas fa-gavel"></i> Enter Sacred Bidding Chamber
+            </a>
+        </section>
+
+        <section id="purchased-products">
+            <h2 class="section-title">Your Treasured Collection</h2>
+            <div class="products-grid" id="purchasedGrid">
+                <!-- Purchased product cards will be dynamically inserted here -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const products = [
+            {
+                id: "IND-CRAFT-001",
+                name: "Royal Rajasthani Miniature Painting",
+                artist: "Ramesh Kumar",
+                price: 2.5,
+                image: "/api/placeholder/250/350"
+            },
+            {
+                id: "IND-CRAFT-002",
+                name: "Ancient Brass Dokra Tribal Sculpture",
+                artist: "Meera Devi",
+                price: 3.7,
+                image: "/api/placeholder/250/350"
+            },
+            {
+                id: "IND-CRAFT-003",
+                name: "Luxurious Kashmir Pashmina Shawl",
+                artist: "Ayesha Khan",
+                price: 4.2,
+                image: "/api/placeholder/250/350"
+            },
+            {
+                id: "IND-CRAFT-004",
+                name: "Intricate Madhubani Folk Art",
+                artist: "Priya Singh",
+                price: 2.9,
+                image: "/api/placeholder/250/350"
+            },
+            {
+                id: "IND-CRAFT-005",
+                name: "Mystic Tanjore Gold Leaf Painting",
+                artist: "Sanjay Raman",
+                price: 5.1,
+                image: "/api/placeholder/250/350"
+            }
+        ];
+
+        const purchasedProducts = [
+            {
+                id: "IND-OWNED-001",
+                name: "Exquisite Warli Tribal Art",
+                artist: "Deepa Patil",
+                price: 1.8,
+                image: "/api/placeholder/250/350"
+            },
+            {
+                id: "IND-OWNED-002",
+                name: "Vintage Bidri Metalwork",
+                artist: "Mohammed Khan",
+                price: 3.5,
+                image: "/api/placeholder/250/350"
+            }
+        ];
+
+        function createProductCard(product, gridId, includeSellButton = false) {
+            const card = document.createElement('div');
+            card.classList.add('product-card');
+            card.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" class="product-image">
+                <div class="product-details">
+                    <p><strong>Patent ID:</strong> ${product.id}</p>
+                    <p><strong>Product:</strong> ${product.name}</p>
+                    <p><strong>Artist:</strong> ${product.artist}</p>
+                    <p><strong>Price:</strong> ${product.price} ETH</p>
+                </div>
+                <div class="product-actions">
+                    <button class="btn btn-bid"><i class="fas fa-gavel"></i> Bid</button>
+                    <button class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</button>
+                </div>
+                ${includeSellButton ? `<button class="btn btn-sell"><i class="fas fa-tags"></i> Sell</button>` : ''}
+            `;
+            document.getElementById(gridId).appendChild(card);
+        }
+
+        // Populate product grids
+        products.forEach(product => createProductCard(product, 'productGrid'));
+        purchasedProducts.forEach(product => createProductCard(product, 'purchasedGrid', true));
+    </script>
+</body>
+</html>
